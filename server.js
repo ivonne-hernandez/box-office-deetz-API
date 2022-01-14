@@ -5,7 +5,7 @@ app.use(cors());
 app.use(express.json());
 
 app.set('port', process.env.PORT || 3001);
-app.locals.favoriteMovies = []
+app.locals.favoriteMovies = [];
 
 app.get('/api/v1/favorite-movies', (request, response) => {
   const faves = app.locals.favoriteMovies;
@@ -14,9 +14,9 @@ app.get('/api/v1/favorite-movies', (request, response) => {
 
 app.get('/api/v1/favorite-movies/:id', (request, response) => {
   const id = request.params.id;
-  const foundFave = app.locals.favoriteMovies.find(movie => movie.id === Number(id))
+  const foundFave = app.locals.favoriteMovies.find(movie => movie.id === Number(id));
 
-  response.status(200).json(foundFave)
+  response.status(200).json(foundFave);
 });
 
 app.post('/api/v1/favorite-movies', (request, response) => {
@@ -33,11 +33,11 @@ app.post('/api/v1/favorite-movies', (request, response) => {
 });
 
 app.delete('/api/v1/favorite-movies/:id', (request, response) => {
-  const id = request.params.id
-  const foundFave = app.locals.favoriteMovies.find(movie => movie.id === Number(id))
+  const id = request.params.id;
+  const foundFave = app.locals.favoriteMovies.find(movie => movie.id === Number(id));
   const index = app.locals.favoriteMovies.indexOf(foundFave);
 
-  app.locals.favoriteMovies.splice(index, 1)
+  app.locals.favoriteMovies.splice(index, 1);
   response.status(201).json({ id: id });
 
 });
